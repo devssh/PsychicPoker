@@ -1,6 +1,6 @@
 Clone this repository and run 
 
-Solution to Poker problem
+## Solution to Poker problem
 
 Run on Python3
 
@@ -10,7 +10,7 @@ Run on Python3
 python main.py
 ```
 
-#Tests
+# Tests
 
 ```
 python tests.py
