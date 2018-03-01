@@ -1,4 +1,4 @@
-from main import predict
+from main import calculate_best_outcome
 
 data = [
     'TH JH QC QD QS QH KH AH 2S 6S',
@@ -13,30 +13,30 @@ data = [
 ]
 
 cards = data[0].split(' ')
-assert predict(cards[:5], cards[5:]) == 'straight-flush'
+assert calculate_best_outcome(cards[:5], cards[5:]) == 'straight-flush'
 
 cards = data[1].split(' ')
-assert predict(cards[:5], cards[5:]) == 'four-of-a-kind'
+assert calculate_best_outcome(cards[:5], cards[5:]) == 'four-of-a-kind'
 
 cards = data[2].split(' ')
-assert predict(cards[:5], cards[5:]) == 'full-house'
+assert calculate_best_outcome(cards[:5], cards[5:]) == 'full-house'
 
 cards = data[3].split(' ')
-assert predict(cards[:5], cards[5:]) == 'flush'
+assert calculate_best_outcome(cards[:5], cards[5:]) == 'flush'
 
 cards = data[4].split(' ')
-assert predict(cards[:5], cards[5:]) == 'straight'
+assert calculate_best_outcome(cards[:5], cards[5:]) == 'straight'
 
 cards = data[5].split(' ')
-assert predict(cards[:5], cards[5:]) == 'three-of-a-kind'
+assert calculate_best_outcome(cards[:5], cards[5:]) == 'three-of-a-kind'
 
 cards = data[6].split(' ')
-assert predict(cards[:5], cards[5:]) == 'two-pairs'
+assert calculate_best_outcome(cards[:5], cards[5:]) == 'two-pairs'
 
 cards = data[7].split(' ')
-assert predict(cards[:5], cards[5:]) == 'one-pair'
+assert calculate_best_outcome(cards[:5], cards[5:]) == 'one-pair'
 
 cards = data[8].split(' ')
-assert predict(cards[:5], cards[5:]) == 'highest-card'
+assert calculate_best_outcome(cards[:5], cards[5:]) == 'highest-card'
 
 print('All tests passed')
