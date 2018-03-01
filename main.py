@@ -6,10 +6,16 @@ from poker_predictor import calculate_best_outcome
 
 
 if __name__ == '__main__':
+    flag = True
     count = int(input('Enter number of input lines/trials\n'))
     for _ in range(count):
-        data = input('Enter the input of 5 cards in hand and top 5 cards of deck\n For example\n' +
-                     'TH JH QC QD QS QH KH AH 2S 6S\n\n').strip()
+        if flag:
+            print('For example\n' +
+                  'TH JH QC QD QS QH KH AH 2S 6S\n\n')
+            flag = False
+            
+        data = input('Enter the input of 5 cards in hand and top 5 cards of deck\n').strip()
+
         # data = [
         #     'TH JH QC QD QS QH KH AH 2S 6S',
         #     '2H 2S 3H 3S 3C 2D 3D 6C 9C TH',
