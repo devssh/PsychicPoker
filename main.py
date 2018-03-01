@@ -10,10 +10,10 @@ if __name__ == '__main__':
     count = int(input('Enter number of input lines/trials\n'))
     for _ in range(count):
         if flag:
-            print('For example\n' +
+            print('Sample Input\n' +
                   'TH JH QC QD QS QH KH AH 2S 6S\n\n')
             flag = False
-            
+
         data = input('Enter the input of 5 cards in hand and top 5 cards of deck\n').strip()
 
         # data = [
