@@ -17,6 +17,7 @@ hand_priority = {value: key for key, value in priority_hand_name.items()}
 
 
 def get_rank_counts(some_hand, values_only=False):
+    # since this is a core logic can Just In Time this
     rank_count_dict = dict(Counter(chain.from_iterable(card[0] for card in some_hand)))
     if values_only:
         return rank_count_dict.values()
@@ -32,6 +33,7 @@ def is_full_house(some_hand):
 
 
 def is_flush(some_hand):
+    # this can be done in a short circuit manner with an accumulator
     suits = [card[1] for card in some_hand]
     return len(set(suits)) == 1
 
@@ -53,11 +55,16 @@ def is_two_pairs(some_hand):
 def is_n_of_a_kind(some_hand, n):
     return n in get_rank_counts(some_hand, values_only=True)
 
-# as you can see I can refactor the methods to all come from a single method but that would sacrifice readability to an extent
+
+# as you can see I can refactor the methods to all come from a single method
+# but that would sacrifice readability to an extent
+# I'm gonna stick with not overusing DRY since the repetition is limited to 2
 
 
 def calculate_best_hand(some_hand):
+    # get flush and straight details here, so I don't have to calculate again
     is_a_flush, is_a_straight = straight_flush(some_hand)
+    # running them in sequence seems ok since it's a short circuit
     if is_a_straight and is_a_flush:
         return hand_priority['straight-flush']
     if is_n_of_a_kind(some_hand, 4):
@@ -82,6 +89,7 @@ def predict(some_hand, some_deck):
     n = len(some_hand)
     for r in range(n + 1):
         # combinations of cards that can be replaced, nCr
+        # can @JIT the combinations calculation
         retain_combination = combinations(some_hand, n - r)
         for combination in retain_combination:
             possible_hand = list(combination) + some_deck[:r]
