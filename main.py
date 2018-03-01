@@ -53,6 +53,8 @@ def is_two_pairs(some_hand):
 def is_n_of_a_kind(some_hand, n):
     return n in get_rank_counts(some_hand, values_only=True)
 
+# as you can see I can refactor the methods to all come from a single method but that would sacrifice readability to an extent
+
 
 def calculate_best_hand(some_hand):
     is_a_flush, is_a_straight = straight_flush(some_hand)
